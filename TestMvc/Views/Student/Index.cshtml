@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TestMvc.Models.StudentModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New Student", "AddStudent")<br />
+    @Html.ActionLink("Create New Standard", "AddStandard")<br />
+    @Html.ActionLink("Create New Batch", "AddBatch")<br />
+    @Html.ActionLink("Search", "SearchList")<br />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StandardId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatchId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StandardId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatchId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditStudent", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteStudent", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<a href="https://www.youtube.com" target="_blank" id="alink">-------------------------------</a><br />
+<button name="abutton" id="abutton" >Button</button>
+<script>
+    $(document).ready(function () {
+        $("#abutton").click(function () {
+            //alert("----------------");
+            //window.location= $("#alink").attr('href');
+            window.open($("#alink").attr('href'));
+            //$('#alink')[0].click();
+        })
+    })
+</script>

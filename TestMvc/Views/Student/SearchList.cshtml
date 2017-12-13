@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TestMvc.Models.StudentModel>
+@{
+    ViewBag.Title = "SearchList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SearchList</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Batch</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.Label("Student Name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("StuName")
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Standard Name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("StdName")
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Batch Name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("BatchName")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StandardId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BatchId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StandardId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BatchId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

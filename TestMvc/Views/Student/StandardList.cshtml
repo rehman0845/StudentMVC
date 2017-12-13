@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TestMvc.Models.Standard>
+
+@{
+    ViewBag.Title = "StandardList";
+}
+
+<h2>StandardList</h2>
+
+<p>
+    @Html.ActionLink("Create New Standard", "AddStandard")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StandardName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StandardName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteStandard", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
